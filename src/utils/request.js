@@ -17,7 +17,6 @@ const fetch = (options) => {
   } = options
 
   const cloneData = lodash.cloneDeep(data)
-
   try {
     let domin = ''
     if (url.match(/[a-zA-z]+:\/\/[^/]*/)) {
@@ -35,7 +34,6 @@ const fetch = (options) => {
   } catch (e) {
     message.error(e.message)
   }
-
   if (fetchType === 'JSONP') {
     return new Promise((resolve, reject) => {
       jsonp(url, {
@@ -53,7 +51,6 @@ const fetch = (options) => {
     url = `http://query.yahooapis.com/v1/public/yql?q=select * from json where url='${options.url}?${encodeURIComponent(qs.stringify(options.data))}'&format=json`
     data = null
   }
-
   switch (method.toLowerCase()) {
     case 'get':
       return axios.get(url, {

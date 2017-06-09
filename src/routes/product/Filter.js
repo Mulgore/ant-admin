@@ -5,6 +5,7 @@ import { FilterItem } from '../../components'
 import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch } from 'antd'
 import city from '../../utils/city'
 
+
 // const Search = Input.Search
 const { RangePicker } = DatePicker
 
@@ -68,7 +69,7 @@ const Filter = ({
     fields = handleFields(fields)
     onFilterChange(fields)
   }
-  const { name, address } = filter
+  const { name, status } = filter
 
   let initialCreateTime = []
   if (filter.createTime && filter.createTime[0]) {
@@ -81,16 +82,16 @@ const Filter = ({
   return (
     <Row gutter={24}>
       <Col {...ColProps} xl={{ span: 4 }} md={{ span: 8 }}>
-        {getFieldDecorator('name', { initialValue: name })(<Input placeholder="Basic usage" />)}
+        {getFieldDecorator('name', { initialValue: name })(<Input placeholder="Title" />)}
       </Col>
       <Col {...ColProps} xl={{ span: 4 }} md={{ span: 8 }}>
-        {getFieldDecorator('address', { initialValue: address })(
+        {getFieldDecorator('status', { initialValue: status })(
           <Cascader
             size="large"
             style={{ width: '100%' }}
-            options={city}
+            options={[{ value: '1', name: 'Update' }, { value: '2', name: 'Delete' }]}
             placeholder="Please pick an address"
-            onChange={handleChange.bind(null, 'address')}
+            onChange={handleChange.bind(null, 'status')}
           />)}
       </Col>
       <Col {...ColProps} xl={{ span: 6 }} md={{ span: 8 }} sm={{ span: 12 }}>

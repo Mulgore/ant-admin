@@ -42,6 +42,7 @@ export default {
     *query ({ payload }, { call, put }) {
       payload = parse(location.search.substr(1))
       const data = yield call(query, payload)
+      console.log(payload)
       if (data) {
         yield put({
           type: 'querySuccess',
@@ -60,7 +61,6 @@ export default {
     *'delete' ({ payload }, { call, put, select }) {
       const data = yield call(remove, { id: payload })
       const { selectedRowKeys } = yield select(_ => _.product)
-      console.log(payload)
       if (data.success) {
         yield put({ type: 'updateState', payload: { selectedRowKeys: selectedRowKeys.filter(_ => _ !== payload) } })
         yield put({ type: 'query' })
