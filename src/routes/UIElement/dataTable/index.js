@@ -61,22 +61,7 @@ class DataTablePage extends React.Component {
       rowKey: 'registered',
     }
 
-    const caseDataTableProps = {
-      fetch: {
-        url: 'http://api.reawei.cn/v1/photo/result/MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIOmchDF0w51j0vb3z6rOsPZQMEiTIVPxyHN7m9wweYbHRR6wA7PbzVtDcY9vTDOmHbgBvlV/EKHmiJRjzRBWecCAwEAAQ==.html',
-        data: {
-          appId: 1075,
-          results: 10,
-        },
-        dataKey: 'data',
-      },
-      columns: [
-        { title: 'ID', dataIndex: 'id', render: (text) => `${text.first} ${text.last}` },
-        { title: 'Title', dataIndex: 'title' },
-        { title: 'Status', dataIndex: 'status' },
-      ],
-      rowKey: 'registered',
-    }
+
     return (<div className="content-inner">
       <Row gutter={32}>
         <Col lg={12} md={24}>
@@ -95,13 +80,6 @@ class DataTablePage extends React.Component {
           <Card title="远程数据">
             <DataTable
               {...fetchDataTableProps}
-            />
-          </Card>
-        </Col>
-        <Col lg={12} md={24}>
-          <Card title="远程数据">
-            <DataTable
-              {...caseDataTableProps}
             />
           </Card>
         </Col>

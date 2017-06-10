@@ -27,13 +27,14 @@ export default {
   proxy:[
     {
       context: ['/api/v1/login/result','/api/v1/login/user/result'],
-      target: "http://localhost:8089",
-      secure: false
+      target: "http://api.reawei.cn",
+      secure: false,
+      changeOrigin: true
     }
-  ]
+  ],
   // "proxy": {
   //   "/api": {
-  //     "target": "http://localhost:8089",
+  //     "target": "api.reawei.cn",
   //     "changeOrigin": true,
   //     "pathRewrite": { "" : "" }
   //   }
