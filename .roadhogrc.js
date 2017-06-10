@@ -23,5 +23,20 @@ export default {
   		    ["import", { "libraryName": "antd", "style": true}]
         ]
       }
-  }
+  },
+  proxy:[
+    {
+      context: ['/api/v1/login/result','/api/v1/login/user/result'],
+      target: "http://localhost:8089",
+      secure: false
+    }
+  ]
+  // "proxy": {
+  //   "/api": {
+  //     "target": "http://localhost:8089",
+  //     "changeOrigin": true,
+  //     "pathRewrite": { "" : "" }
+  //   }
+  // }
+
 }

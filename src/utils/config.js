@@ -11,11 +11,11 @@ module.exports = {
   openPages: ['/login'],
   apiPrefix: '/api/v1',
   api: {
-    userLogin: '/user/login',
+    userLogin: '/login/result',
     userLogout: '/user/logout',
     userInfo: '/userInfo',
     users: '/users',
-    user: '/user/:id',
+    user: '/login/user/result',
     dashboard: '/dashboard',
     products: '/products',
     product: '/product/:id',

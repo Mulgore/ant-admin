@@ -19,7 +19,6 @@ export async function create (params) {
 }
 
 export async function remove (params) {
-  console.log(params)
   return request({
     url: user,
     method: 'delete',

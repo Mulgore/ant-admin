@@ -8,7 +8,13 @@ import city from '../../utils/city'
 
 // const Search = Input.Search
 const { RangePicker } = DatePicker
-
+const requestOptions = [
+  {
+    1:'禁用',
+  },
+  {
+    0: '正常',
+  }]
 const ColProps = {
   xs: 24,
   sm: 12,
@@ -89,7 +95,7 @@ const Filter = ({
           <Cascader
             size="large"
             style={{ width: '100%' }}
-            options={[{ value: '1', name: 'Update' }, { value: '2', name: 'Delete' }]}
+            options={requestOptions}
             placeholder="Please pick an address"
             onChange={handleChange.bind(null, 'status')}
           />)}
