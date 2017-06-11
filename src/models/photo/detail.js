@@ -3,7 +3,7 @@ import { query } from '../../services/user'
 
 export default {
 
-  namespace: 'productDetail',
+  namespace: 'photoDetail',
 
   state: {
     data: {},
@@ -12,7 +12,7 @@ export default {
   subscriptions: {
     setup ({ dispatch, history }) {
       history.listen(() => {
-        const match = pathToRegexp('/product/:id').exec(location.pathname)
+        const match = pathToRegexp('/photo/:id').exec(location.pathname)
         if (match) {
           dispatch({ type: 'query', payload: { id: match[1] } })
         }
@@ -21,7 +21,7 @@ export default {
   },
 
   effects: {
-    *productQuery ({
+    *photoQuery ({
       payload,
     }, { call, put }) {
       const data = yield call(query, payload)

@@ -124,19 +124,19 @@ const Routers = function ({ history, app }) {
             }, 'chart-areaChart')
           },
         }, {
-          path: 'product',
+          path: 'photo',
           getComponent (nextState, cb) {
             require.ensure([], require => {
-              registerModel(app, require('./models/product'))
-              cb(null, require('./routes/product/'))
+              registerModel(app, require('./models/photo'))
+              cb(null, require('./routes/photo/'))
             }, 'user')
           },
         }, {
-          path: 'product/:id',
+          path: 'photo/:id',
           getComponent (nextState, cb) {
             require.ensure([], require => {
-              registerModel(app, require('./models/product/detail'))
-              cb(null, require('./routes/product/detail/'))
+              registerModel(app, require('./models/photo/detail'))
+              cb(null, require('./routes/photo/detail/'))
             }, 'user-detail')
           },
         }, {

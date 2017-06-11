@@ -1,12 +1,12 @@
-import { create, remove, update } from '../services/product'
-import * as productService from '../services/products'
+import { create, remove, update } from '../services/photo'
+import * as photoService from '../services/photos'
 import { parse } from 'qs'
 
-const { query } = productService
+const { query } = photoService
 
 export default {
 
-  namespace: 'product',
+  namespace: 'photo',
 
   state: {
     list: [],
@@ -27,7 +27,7 @@ export default {
   subscriptions: {
     setup ({ dispatch, history }) {
       history.listen(location => {
-        if (location.pathname === '/product') {
+        if (location.pathname === '/photo') {
           dispatch({
             type: 'query',
             payload: location.query,

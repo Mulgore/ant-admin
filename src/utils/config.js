@@ -17,7 +17,7 @@ module.exports = {
     users: '/users',
     user: '/login/user/result',
     dashboard: '/dashboard',
-    products: '/products',
-    product: '/product/:id',
+    photos: '/photos',
+    photo: '/photo/:id',
   },
 }

@@ -147,15 +147,15 @@ module.exports = [
   {
     id: 7,
     bpid: 1,
-    name: 'Product Manage',
-    icon: 'shop',
-    router: '/product',
+    name: 'Photo Manage',
+    icon: 'picture',
+    router: '/photo',
   },
   {
     id: 71,
     mpid: -1,
     bpid: 7,
-    name: 'Product Detail',
-    router: '/product/:id',
+    name: 'Photo Detail',
+    router: '/photo/:id',
   },
 ]

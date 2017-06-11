@@ -8,32 +8,32 @@ import List from './List'
 import Filter from './Filter'
 import Modal from './Modal'
 
-const Product = ({ location, dispatch, product, loading }) => {
-  const { list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys } = product
+const Photo = ({ location, dispatch, photo, loading }) => {
+  const { list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys } = photo
   const { pageSize } = pagination
 
   const modalProps = {
     item: modalType === 'create' ? {} : currentItem,
     visible: modalVisible,
     maskClosable: false,
-    confirmLoading: loading.effects['product/update'],
-    title: `${modalType === 'create' ? 'Create Product' : 'Update Product'}`,
+    confirmLoading: loading.effects['photo/update'],
+    title: `${modalType === 'create' ? 'Create Photo' : 'Update Photo'}`,
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       dispatch({
-        type: `product/${modalType}`,
+        type: `photo/${modalType}`,
         payload: data,
       })
     },
     onCancel () {
       dispatch({
-        type: 'product/hideModal',
+        type: 'photo/hideModal',
       })
     },
   }
   const listProps = {
     dataSource: list,
-    loading: loading.effects['products/query'],
+    loading: loading.effects['photos/query'],
     pagination,
     location,
     isMotion,
@@ -50,13 +50,13 @@ const Product = ({ location, dispatch, product, loading }) => {
     },
     onDeleteItem (id) {
       dispatch({
-        type: 'product/delete',
+        type: 'photo/delete',
         payload: id,
       })
     },
     onEditItem (item) {
       dispatch({
-        type: 'product/showModal',
+        type: 'photo/showModal',
         payload: {
           modalType: 'update',
           currentItem: item,
@@ -68,7 +68,7 @@ const Product = ({ location, dispatch, product, loading }) => {
       onChange: (keys) => {
         console.log(keys)
         dispatch({
-          type: 'product/updateState',
+          type: 'photo/updateState',
           payload: {
             selectedRowKeys: keys,
           },
@@ -94,31 +94,31 @@ const Product = ({ location, dispatch, product, loading }) => {
     },
     onSearch (fieldsValue) {
       fieldsValue.keyword.length ? dispatch(routerRedux.push({
-        pathname: '/product',
+        pathname: '/photo',
         query: {
           field: fieldsValue.field,
           keyword: fieldsValue.keyword,
         },
       })) : dispatch(routerRedux.push({
-        pathname: '/product',
+        pathname: '/photo',
       }))
     },
     onAdd () {
       dispatch({
-        type: 'product/showModal',
+        type: 'photo/showModal',
         payload: {
           modalType: 'create',
         },
       })
     },
     switchIsMotion () {
-      dispatch({ type: 'product/switchIsMotion' })
+      dispatch({ type: 'photo/switchIsMotion' })
     },
   }
 
   const handleDeleteItems = () => {
     dispatch({
-      type: 'product/multiDelete',
+      type: 'photo/multiDelete',
       payload: {
         ids: selectedRowKeys,
       },
@@ -145,11 +145,11 @@ const Product = ({ location, dispatch, product, loading }) => {
   )
 }
 
-Product.propTypes = {
-  product: PropTypes.object,
+Photo.propTypes = {
+  photo: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
 }
 
-export default connect(({ product, loading }) => ({ product, loading }))(Product)
+export default connect(({ photo, loading }) => ({ photo, loading }))(Photo)
