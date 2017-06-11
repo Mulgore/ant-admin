@@ -42,7 +42,6 @@ export default {
     *query ({ payload }, { call, put }) {
       payload = parse(location.search.substr(1))
       const data = yield call(query, payload)
-      console.log(payload)
       if (data) {
         yield put({
           type: 'querySuccess',

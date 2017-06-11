@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { FilterItem } from '../../components'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch } from 'antd'
+import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch, Select } from 'antd'
 import city from '../../utils/city'
 
 
@@ -41,10 +41,10 @@ const Filter = ({
   },
 }) => {
   const handleFields = (fields) => {
-    const { createTime } = fields
-    if (createTime.length) {
-      fields.createTime = [createTime[0].format('YYYY-MM-DD'), createTime[1].format('YYYY-MM-DD')]
-    }
+    // const { createTime } = fields
+    // if (createTime.length) {
+    //   fields.createTime = [createTime[0].format('YYYY-MM-DD'), createTime[1].format('YYYY-MM-DD')]
+    // }
     return fields
   }
 
@@ -77,13 +77,13 @@ const Filter = ({
   }
   const { name, status } = filter
 
-  let initialCreateTime = []
-  if (filter.createTime && filter.createTime[0]) {
-    initialCreateTime[0] = moment(filter.createTime[0])
-  }
-  if (filter.createTime && filter.createTime[1]) {
-    initialCreateTime[1] = moment(filter.createTime[1])
-  }
+  // let initialCreateTime = []
+  // if (filter.createTime && filter.createTime[0]) {
+  //   initialCreateTime[0] = moment(filter.createTime[0])
+  // }
+  // if (filter.createTime && filter.createTime[1]) {
+  //   initialCreateTime[1] = moment(filter.createTime[1])
+  // }
 
   return (
     <Row gutter={24}>
@@ -92,21 +92,24 @@ const Filter = ({
       </Col>
       <Col {...ColProps} xl={{ span: 4 }} md={{ span: 8 }}>
         {getFieldDecorator('status', { initialValue: status })(
-          <Cascader
-            size="large"
-            style={{ width: '100%' }}
-            options={requestOptions}
-            placeholder="Please pick an address"
-            onChange={handleChange.bind(null, 'status')}
-          />)}
+          <Select
+            showSearch
+            style={{ width: 200 }}
+            placeholder="选择状态"
+            onChange={handleChange}
+          >
+            <Option value="0">正常</Option>
+            <Option value="1">禁用</Option>
+          </Select>
+        )}
       </Col>
-      <Col {...ColProps} xl={{ span: 6 }} md={{ span: 8 }} sm={{ span: 12 }}>
-        <FilterItem label="Createtime">
-          {getFieldDecorator('createTime', { initialValue: initialCreateTime })(
-            <RangePicker style={{ width: '100%' }} size="large" onChange={handleChange.bind(null, 'createTime')} />
-          )}
-        </FilterItem>
-      </Col>
+      {/*<Col {...ColProps} xl={{ span: 6 }} md={{ span: 8 }} sm={{ span: 12 }}>*/}
+        {/*<FilterItem label="Createtime">*/}
+          {/*{getFieldDecorator('createTime', { initialValue: initialCreateTime })(*/}
+            {/*<RangePicker style={{ width: '100%' }} size="large" onChange={handleChange.bind(null, 'createTime')} />*/}
+          {/*)}*/}
+        {/*</FilterItem>*/}
+      {/*</Col>*/}
       <Col {...TwoColProps} xl={{ span: 10 }} md={{ span: 24 }} sm={{ span: 24 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div >
